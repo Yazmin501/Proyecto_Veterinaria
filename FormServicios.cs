@@ -69,5 +69,10 @@ namespace Proyecto_Veterinaria
         {
 
         }
+
+        private void FormServicios_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
