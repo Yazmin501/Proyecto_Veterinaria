@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Proyecto_Veterinaria
 {
@@ -28,6 +29,15 @@ namespace Proyecto_Veterinaria
         // metodo para agregar una mascota al arreglo y listar
         public string Agregar_Mascota(Mascota MASCOTA)
         {
+            if(MASCOTA == null)
+            
+                throw new ArgumentException("¡Error! La mascota no puede ser nula.");
+            
+            if (string.IsNullOrWhiteSpace(MASCOTA.Nombre) || string.IsNullOrWhiteSpace(MASCOTA.Raza) ||
+                MASCOTA.Edad < 0 || MASCOTA.Peso < 0 || string.IsNullOrWhiteSpace(MASCOTA.Especie))
+            
+                throw new ArgumentException("¡Error! Todos los campos de la mascota deben ser válidos.");
+            
             string mensaje = "";
             if (Indice < Arr_Mascotas.Length)
             {
@@ -45,6 +55,10 @@ namespace Proyecto_Veterinaria
         // metodo para listar las mascotas
         public string Listar_Mascotas()
         {
+            if(indice == 0)
+            {
+               throw new InvalidOperationException( "No hay mascotas registradas.");
+            }
             string lista = "";
             for (int i = 0; i < indice; i++)
             {
@@ -67,22 +81,34 @@ namespace Proyecto_Veterinaria
                     Arr_Mascotas[i].Edad == edad &&
                     Arr_Mascotas[i].Peso == peso &&
                     Arr_Mascotas[i].Especie == especie)
-
+                {
+                    //validar los nuevos datos antes de modificar
+                    if(string.IsNullOrWhiteSpace(nombreNuevo) || string.IsNullOrWhiteSpace(razaNueva) ||
+                       edadNueva < 0 || pesoNuevo < 0 || string.IsNullOrWhiteSpace(especieNueva))
+                    {
+                        throw new ArgumentException("¡Error! Todos los campos de la mascota deben ser válidos.");
+                    }
+                    //modificador
                     encontrado = true;
-                Arr_Mascotas[i].Nombre = nombreNuevo;
-                Arr_Mascotas[i].Raza = razaNueva;
-                Arr_Mascotas[i].Edad = edadNueva;
-                Arr_Mascotas[i].Peso = pesoNuevo;
-                Arr_Mascotas[i].Especie = especieNueva;
-                mensaje = "Mascota modificada correctamente";
-                break; // salir del ciclo
-            }
-        }
-                return mensaje;
-            }
+                    Arr_Mascotas[i].Nombre = nombreNuevo;
+                    Arr_Mascotas[i].Raza = razaNueva;
+                    Arr_Mascotas[i].Edad = edadNueva;
+                    Arr_Mascotas[i].Peso = pesoNuevo;
+                    Arr_Mascotas[i].Especie = especieNueva;
+                    mensaje = "Mascota modificada correctamente";
+                    break; // salir del ciclo
 
-           // metodo para eliminar una mascota
-            public string Eliminar_Mascota(string nombre, string raza, int edad, double peso, string especie)
+                }
+                return mensaje;
+
+            }
+            throw new InvalidOperationException("Mascota no encontrada para modificar.");
+
+
+        }
+
+        // metodo para eliminar una mascota
+        public string Eliminar_Mascota(string nombre, string raza, int edad, double peso, string especie)
         {
             string mensaje = "Mascota no encontrada";
             bool encontrado = false;
@@ -98,19 +124,23 @@ namespace Proyecto_Veterinaria
                 {
                     encontrado = true;
                     posicion = i;
-
-                    //recorrer el arreglo para eliminar
-                    for (int j = posicion; j < indice - 1; j++)
-                    {
-                        Arr_Mascotas[j] = Arr_Mascotas[j + 1];
-                    }
-
-                    Arr_Mascotas[indice - 1] = null;
-                    indice--;
-                    mensaje = "Mascota eliminada correctamente";
-                    break;
+                    break; // salir del ciclo
                 }
             }
+
+            if(posicion==-1)
+                throw new ArgumentException("¡Error! La mascota no se encontró para eliminar.");
+
+            //recorrer el arreglo para eliminar
+            for (int j = posicion; j < indice - 1; j++)
+            { 
+                 Arr_Mascotas[j] = Arr_Mascotas[j + 1];
+             }
+
+                Arr_Mascotas[indice - 1] = null;
+                indice--;
+                mensaje = "Mascota eliminada correctamente";
+            
             return mensaje;
         }
 
@@ -122,6 +152,10 @@ namespace Proyecto_Veterinaria
             {
                 //Leer todas las líneas del archivo
                 string rutaArchivo = "Mascotas.txt";
+                if(!System.IO.File.Exists(rutaArchivo))
+                
+                    throw new System.IO.FileNotFoundException("El archivo no existe.");
+               
                 string[] lineas = System.IO.File.ReadAllLines(rutaArchivo);
 
                 //Recorrer cada línea y armar el listado
@@ -129,14 +163,19 @@ namespace Proyecto_Veterinaria
                 {
                     string[] datos = lineas[i].Split(',');
 
+                    if(datos.Length < 5)
+                    
+                        throw new FormatException("Formato de línea incorrecto en el archivo.");
+                    
                     // Crear objeto Mascota
-                    Mascota nueva = new Mascota();
-                    nueva.Nombre = datos[0];
-                    nueva.Raza = datos[1];
-                    nueva.Edad = int.Parse(datos[2]);
-                    nueva.Peso = double.Parse(datos[3]);
-                    nueva.Especie = datos[4];
+                    Mascota nueva = new Mascota
 
+                    { nueva.Nombre = datos[0];
+                        nueva.Raza = datos[1];
+                        nueva.Edad = int.Parse(datos[2]);
+                        nueva.Peso = double.Parse(datos[3]);
+                        nueva.Especie = datos[4]; };
+                
                     // Guardar en el arreglo
                     Arr_Mascotas[i] = nueva;
                     Indice++;
@@ -157,7 +196,15 @@ namespace Proyecto_Veterinaria
 
             return resultado;
         }
-
+        public Mascota[] ObtenerMascotas()
+        {
+            Mascota[] actuales = new Mascota[indice];
+            for (int i = 0; i < indice; i++)
+            {
+                actuales[i] = Arr_Mascotas[i];
+            }
+            return actuales;
+        }
 
 
     }
