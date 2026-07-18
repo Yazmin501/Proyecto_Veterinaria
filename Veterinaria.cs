@@ -7,8 +7,10 @@ using System.Windows.Forms;
 
 namespace Proyecto_Veterinaria
 {
+   
     internal class Veterinaria
     {
+
         //arreglo de objeto , almacena las mascotas
         private Mascota[] Arr_Mascotas = new Mascota[6]; // máximo 6 mascotas
                                                          //variable para el indice del arreglo
@@ -166,15 +168,16 @@ namespace Proyecto_Veterinaria
                     if(datos.Length < 5)
                     
                         throw new FormatException("Formato de línea incorrecto en el archivo.");
-                    
+
                     // Crear objeto Mascota
                     Mascota nueva = new Mascota
-
-                    { nueva.Nombre = datos[0];
-                        nueva.Raza = datos[1];
-                        nueva.Edad = int.Parse(datos[2]);
-                        nueva.Peso = double.Parse(datos[3]);
-                        nueva.Especie = datos[4]; };
+                    {
+                        nueva.Nombre = datos[0],
+                        nueva.Raza = datos[1],
+                        nueva.Edad = int.Parse(datos[2]),
+                        nueva.Peso = double.Parse(datos[3]),
+                        nueva.Especie = datos[4]
+                    };
                 
                     // Guardar en el arreglo
                     Arr_Mascotas[i] = nueva;
