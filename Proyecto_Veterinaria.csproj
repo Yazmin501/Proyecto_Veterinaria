@@ -84,6 +84,15 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCargarArchivo.resx">
+      <DependentUpon>FormCargarArchivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEliminar.resx">
+      <DependentUpon>FormEliminar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormModificar.resx">
+      <DependentUpon>FormModificar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormServicios.resx">
       <DependentUpon>FormServicios.cs</DependentUpon>
     </EmbeddedResource>
