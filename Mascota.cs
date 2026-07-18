@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Veterinaria
 {
-    internal class Mascota
+     public class Mascota
     {
         //Atributos
         private string nombre;
@@ -16,15 +16,14 @@ namespace Proyecto_Veterinaria
         private string especie;
 
         // Constructor
-        public Mascota()
+        public Mascota(string nombre, string raza, int edad, double peso, string especie)
         {
-            nombre = "";
-            raza = "";
-            edad = 0;
-            peso = 0.0;
-            especie = "";
+            this.Nombre = nombre;
+            this.Raza = raza;
+            this.Edad = edad;
+            this.Peso = peso;
+            this.Especie = especie;
         }
-
         // Propiedades 
         public string Nombre
         {
