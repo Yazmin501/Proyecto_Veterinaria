@@ -43,12 +43,12 @@ namespace Proyecto_Veterinaria
                 }
 
                 //  Crear el objeto Mascota 
-                Mascota nuevaMascota = new Mascota();
-                nuevaMascota.Nombre = txtNombre.Text.Trim();
-                nuevaMascota.Raza = txtRaza.Text.Trim();
-                nuevaMascota.Edad = edad;
-                nuevaMascota.Peso = peso;
-                nuevaMascota.Especie = cbEspecie.SelectedItem.ToString();
+                Mascota nuevaMascota = new Mascota(
+                 txtNombre.Text.Trim(),
+                 txtRaza.Text.Trim(),
+                 int.Parse(txtEdad.Text),
+                 double.Parse(txtPeso.Text),
+                  cbEspecie.SelectedItem.ToString());
 
                 // Mostramos los datos
                 MessageBox.Show("¡Mascota creada correctamente!\n\n" +
