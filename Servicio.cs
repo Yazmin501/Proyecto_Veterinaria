@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Veterinaria
 {
-    internal class Servicio
+    public class Servicio
     {
         // Declarando variables mediante la asignación directa
         public double precioConsulta = 300.00;
