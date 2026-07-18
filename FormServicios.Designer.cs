@@ -179,13 +179,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(633, 419);
+            this.ClientSize = new System.Drawing.Size(636, 415);
             this.Controls.Add(this.gbRecibo);
             this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.gpServicios);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormServicios";
             this.Text = "FormServicios";
+            this.Load += new System.EventHandler(this.FormServicios_Load);
             this.gpServicios.ResumeLayout(false);
             this.gpServicios.PerformLayout();
             this.gbRecibo.ResumeLayout(false);
