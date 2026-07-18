@@ -16,5 +16,31 @@ namespace Proyecto_Veterinaria
         {
             InitializeComponent();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnModificarMascota_Click(object sender, EventArgs e)
+        {
+            FormModificar ventanaModificar = new FormModificar();
+            ventanaModificar.MdiParent = this; 
+            ventanaModificar.Show();
+        }
+
+        private void btnEliminarMascota_Click(object sender, EventArgs e)
+        {
+            FormEliminar ventanaEliminar = new FormEliminar();
+            ventanaEliminar.MdiParent = this;
+            ventanaEliminar.Show();
+        }
+
+        private void btnServicios_Click(object sender, EventArgs e)
+        {
+            FormServicios ventanaServicios = new FormServicios();
+            ventanaServicios.MdiParent = this;
+            ventanaServicios.Show();
+        }
     }
 }
