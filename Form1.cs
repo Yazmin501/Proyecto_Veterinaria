@@ -89,5 +89,22 @@ namespace Proyecto_Veterinaria
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            agregar ventanaAgregar = null;
+
+            if (ventanaAgregar == null || ventanaAgregar.IsDisposed)
+            {
+                ventanaAgregar = new agregar(); 
+                ventanaAgregar.MdiParent = this;
+                ventanaAgregar.Show();
+            }
+            else
+            {
+                ventanaAgregar.BringToFront();
+            }
+        }
     }
 }

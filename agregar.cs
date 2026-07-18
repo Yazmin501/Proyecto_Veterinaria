@@ -108,5 +108,10 @@ namespace Proyecto_Veterinaria
             picMascota.Image = null;
             txtNombre.Focus();
         }
+
+        private void btnLimpiar_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
