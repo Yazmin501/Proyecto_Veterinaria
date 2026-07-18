@@ -8,5 +8,58 @@ namespace Proyecto_Veterinaria
 {
     internal class Mascota
     {
+        //Atributos
+        private string nombre;
+        private string raza;
+        private int edad;
+        private double peso;
+        private string especie;
+
+        // Constructor
+        public Mascota()
+        {
+            nombre = "";
+            raza = "";
+            edad = 0;
+            peso = 0.0;
+            especie = "";
+        }
+
+        // Propiedades 
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+
+        public string Raza
+        {
+            get { return raza; }
+            set { raza = value; }
+        }
+
+        public int Edad
+        {
+            get { return edad; }
+            set { edad = value; }
+        }
+
+        public double Peso
+        {
+            get { return peso; }
+            set { peso = value; }
+        }
+
+        public string Especie
+        {
+            get { return especie; }
+            set { especie = value; }
+        }
+
+       
+        public string ObtenerDatos()
+        {
+            return "Nombre: " + nombre + ", Raza: " + raza + ", Edad: " + edad + " años, Peso: " + peso + "kg, Especie: " + especie;
+        }
     }
 }
