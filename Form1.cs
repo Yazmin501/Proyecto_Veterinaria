@@ -10,8 +10,13 @@ using System.Windows.Forms;
 
 namespace Proyecto_Veterinaria
 {
+    
     public partial class Form1 : Form
     {
+        private FormModificar ventanaModificar = null;
+        private FormEliminar ventanaEliminar = null;
+        private FormServicios ventanaServicios = null;
+        private FormCargarArchivo ventanaCargarArchivo = null;
         public Form1()
         {
             InitializeComponent();
@@ -24,23 +29,65 @@ namespace Proyecto_Veterinaria
 
         private void btnModificarMascota_Click(object sender, EventArgs e)
         {
-            FormModificar ventanaModificar = new FormModificar();
-            ventanaModificar.MdiParent = this; 
-            ventanaModificar.Show();
+            if(ventanaModificar == null || ventanaModificar.IsDisposed)
+            {
+                ventanaModificar = new FormModificar();
+                ventanaModificar.MdiParent = this;
+                ventanaModificar.Show();
+            }
+            else
+            {
+                ventanaModificar.BringToFront();
+            }
         }
 
         private void btnEliminarMascota_Click(object sender, EventArgs e)
         {
-            FormEliminar ventanaEliminar = new FormEliminar();
-            ventanaEliminar.MdiParent = this;
-            ventanaEliminar.Show();
+            if(ventanaEliminar == null || ventanaEliminar.IsDisposed)
+            {
+                ventanaEliminar = new FormEliminar();
+                ventanaEliminar.MdiParent = this;
+                ventanaEliminar.Show();
+            }
+            else
+            {
+                ventanaEliminar.BringToFront();
+            }
+           
         }
 
         private void btnServicios_Click(object sender, EventArgs e)
         {
-            FormServicios ventanaServicios = new FormServicios();
-            ventanaServicios.MdiParent = this;
-            ventanaServicios.Show();
+           if(ventanaServicios == null || ventanaServicios.IsDisposed)
+            {
+                ventanaServicios = new FormServicios();
+                ventanaServicios.MdiParent = this;
+                ventanaServicios.Show();
+            }
+            else
+            {
+                ventanaServicios.BringToFront();
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCargarArchivo_Click(object sender, EventArgs e)
+        {
+            if (ventanaCargarArchivo == null || ventanaCargarArchivo.IsDisposed)
+            {
+                ventanaCargarArchivo = new FormCargarArchivo();
+                ventanaCargarArchivo.MdiParent = this;
+                ventanaCargarArchivo.Show();
+            }
+            else
+            {
+                ventanaCargarArchivo.BringToFront();
+            }
+
         }
     }
 }
