@@ -24,12 +24,12 @@ namespace Proyecto_Veterinaria
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            Servicio Servicio = new Servicio();
+            Servicio servicio = new Servicio();
 
             //  Arreglo de tipo CheckBox agrupa los controles visuales de la pantalla para poder acceder a ellos mas facil.
             CheckBox[] listaCheckBoxes = { chkConsulta, chkVacuna, chkDesparasitación, chkEstetica, chkHospedaje, chkCirugia };
             // Arreglo con los precios de cada servicio
-            double[] listaPrecios = { Servicio.precioConsulta, Servicio.precioVacuna, Servicio.precioDesparasitacion, Servicio.precioEstetica, Servicio.precioHospedaje, Servicio.precioCirugia };
+            double[] listaPrecios = { servicio.precioConsulta, servicio.precioVacuna, servicio.precioDesparasitacion, servicio.precioEstetica, servicio.precioHospedaje, servicio.precioCirugia };
             // Arreglo con los nombres de los servicios
             string[] listaNombres = { "Consulta General", "Vacunación", "Desparasitación", "Estética / Baño", "Hospedaje", "Cirugía Menor" };
 
@@ -40,7 +40,7 @@ namespace Proyecto_Veterinaria
 
             for (int i = 0; i < 6; i++)
             {
-                // Revisa que algun cuadrito este selleccionado
+                // Revisa que algun cuadrito este seleccionado
                 if (listaCheckBoxes[i].Checked)
                 {
                     //Suma el precio del servicio al dinero total
@@ -54,12 +54,12 @@ namespace Proyecto_Veterinaria
             // Validación por si no marcaron nada
             if (contadorServicios == 0)
             {
-                lblRecibo.Text = " NO HAS SELLECCIONADO NINGUN SERVICIO ";
+                lblRecibo.Text = " NO HAS SELECCIONADO NINGUN SERVICIO ";
                 MessageBox.Show("Por favor, seleccione al menos un servicio.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            double dineroDescontado = Servicio.CalcularDescuento(contadorServicios, total);
+            double dineroDescontado = servicio.CalcularDescuento(contadorServicios, total);
             double totalAPagar = total - dineroDescontado;
 
             lblRecibo.Text =$"-----------------------------------------------------\n  RECIBO SERVICIOS  \n -----------------------------------------------------\n {listaDeServiciosComprados} -----------------------------------------------------\n Subtotal: {total} \n Descuento aplicado: {dineroDescontado} \n-----------------------------------------------------\n TOTAL A PAGAR: {totalAPagar} \n-----------------------------------------------------";
