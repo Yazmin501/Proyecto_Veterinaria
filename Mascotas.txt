@@ -1,0 +1,6 @@
+﻿Firulais,Pastor Alemán,5,30.5,Perro
+Michi,Siames,3,4.2,Gato
+Rex,Bulldog,2,25.0,Perro
+Lola,Canario,1,0.1,Ave
+Nemo,Goldfish,1,0.05,Pez
+BolaDeNieve,Hámster Sirio,2,0.12,Roedor
