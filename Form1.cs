@@ -17,6 +17,7 @@ namespace Proyecto_Veterinaria
         private FormEliminar ventanaEliminar = null;
         private FormServicios ventanaServicios = null;
         private FormCargarArchivo ventanaCargarArchivo = null;
+        private agregar ventanaAgregar = null;
         public Form1()
         {
             InitializeComponent();
@@ -93,7 +94,6 @@ namespace Proyecto_Veterinaria
         private void button1_Click(object sender, EventArgs e)
         {
 
-            agregar ventanaAgregar = null;
 
             if (ventanaAgregar == null || ventanaAgregar.IsDisposed)
             {
