@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_Veterinaria;
+
 
 namespace Proyecto_Veterinaria
 {
@@ -51,9 +53,11 @@ namespace Proyecto_Veterinaria
                  double.Parse(txtPeso.Text),
                   cbEspecie.SelectedItem.ToString());
 
+                string mensaje = DatosGlobales.veterinaria.Agregar_Mascota(nuevaMascota);
+
                 // Mostramos los datos
                 MessageBox.Show("¡Mascota creada correctamente!\n\n" +
-                                "Datos del Objeto:\n" + nuevaMascota.ObtenerDatos(),
+                                "Datos de la Mascota:\n" + nuevaMascota.ObtenerDatos(),
                                 "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LimpiarControles();
@@ -111,6 +115,11 @@ namespace Proyecto_Veterinaria
         }
 
         private void btnLimpiar_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRegistrarMascota_Click_1(object sender, EventArgs e)
         {
 
         }
