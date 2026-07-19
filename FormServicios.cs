@@ -12,6 +12,7 @@ namespace Proyecto_Veterinaria
 {
     public partial class FormServicios : Form
     {
+        private Veterinaria Veterinaria = new Veterinaria();
         public FormServicios()
         {
             InitializeComponent();

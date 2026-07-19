@@ -67,6 +67,7 @@
             this.Controls.Add(this.btnCargarArchivo);
             this.Name = "FormCargarArchivo";
             this.Text = "FormCargarArchivo";
+            this.Load += new System.EventHandler(this.FormCargarArchivo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtViewMascotas)).EndInit();
             this.ResumeLayout(false);
 

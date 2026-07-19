@@ -12,18 +12,24 @@ namespace Proyecto_Veterinaria
 {
     public partial class FormModificar : Form
     {
+        private Veterinaria Veterinaria = DatosGlobales.veterinaria;
         public FormModificar()
         {
             InitializeComponent();
         }
-        private Veterinaria Veterinaria = new Veterinaria();
+        
 
 
         private void FormModificar_Load(object sender, EventArgs e)
         {
-            //Veterinaria.Listar_Mascotas(); // cargar mascotas desde archivo
-            //cmdMascotas.DisplayMember = "Nombre"; // mostrar solo el nombre
-            //cmdMascotas.DataSource = Veterinaria.ObtenerMascotas();
+            // Llenar ComboBox de especies
+            cbNewEspecie.Items.Clear();
+            cbNewEspecie.Items.Add("Perro");
+            cbNewEspecie.Items.Add("Gato");
+            cbNewEspecie.Items.Add("Ave");
+            cbNewEspecie.Items.Add("Pez");
+            cbNewEspecie.Items.Add("Roedor");
+
             var mascotas = Veterinaria.ObtenerMascotas();
             if (mascotas == null || mascotas.Length == 0)
             {
@@ -46,7 +52,7 @@ namespace Proyecto_Veterinaria
                 txtNewRaza.Text = seleccionada.Raza;
                 txtNewEdad.Text = seleccionada.Edad.ToString();
                 txtNewPeso.Text = seleccionada.Peso.ToString();
-                txtNewEspecie.Text = seleccionada.Especie;
+                cbNewEspecie.SelectedItem = seleccionada.Especie;
             }
         }
 
@@ -68,14 +74,14 @@ namespace Proyecto_Veterinaria
                         txtNewRaza.Text,
                         int.Parse(txtNewEdad.Text),
                         double.Parse(txtNewPeso.Text),
-                        txtNewEspecie.Text
+                        cbNewEspecie.SelectedItem.ToString()
                     );
 
                     MessageBox.Show(mensaje, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Refrescar ComboBox con los datos actualizados
                     cmdMascotas.DataSource = null;
-                    cmdMascotas.DataSource = Veterinaria.ObtenerMascotas();
+                    cmdMascotas.DataSource =Veterinaria.ObtenerMascotas();
                     cmdMascotas.DisplayMember = "Nombre";
                 }
             }

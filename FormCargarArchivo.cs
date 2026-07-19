@@ -12,11 +12,12 @@ namespace Proyecto_Veterinaria
 {
     public partial class FormCargarArchivo : Form
     {
+        private Veterinaria Veterinaria = new Veterinaria();
         public FormCargarArchivo()
         {
             InitializeComponent();
         }
-        private Veterinaria Veterinaria = new Veterinaria();
+       
         private void btnCargarArchivo_Click(object sender, EventArgs e)
         {
             try
@@ -37,6 +38,11 @@ namespace Proyecto_Veterinaria
                 MessageBox.Show("Error al cargar archivo: " + ex.Message,
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void FormCargarArchivo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormModificar));
             this.cmdMascotas = new System.Windows.Forms.ComboBox();
             this.gpModificarMascota = new System.Windows.Forms.GroupBox();
-            this.txtNewEspecie = new System.Windows.Forms.TextBox();
             this.txtNewPeso = new System.Windows.Forms.TextBox();
             this.txtNewEdad = new System.Windows.Forms.TextBox();
             this.txtNewRaza = new System.Windows.Forms.TextBox();
@@ -43,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.cbNewEspecie = new System.Windows.Forms.ComboBox();
             this.gpModificarMascota.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +61,7 @@
             // gpModificarMascota
             // 
             this.gpModificarMascota.BackColor = System.Drawing.Color.Transparent;
-            this.gpModificarMascota.Controls.Add(this.txtNewEspecie);
+            this.gpModificarMascota.Controls.Add(this.cbNewEspecie);
             this.gpModificarMascota.Controls.Add(this.txtNewPeso);
             this.gpModificarMascota.Controls.Add(this.txtNewEdad);
             this.gpModificarMascota.Controls.Add(this.txtNewRaza);
@@ -80,13 +80,6 @@
             this.gpModificarMascota.TabIndex = 1;
             this.gpModificarMascota.TabStop = false;
             this.gpModificarMascota.Text = "Modificar Datos Mascota";
-            // 
-            // txtNewEspecie
-            // 
-            this.txtNewEspecie.Location = new System.Drawing.Point(88, 209);
-            this.txtNewEspecie.Name = "txtNewEspecie";
-            this.txtNewEspecie.Size = new System.Drawing.Size(100, 33);
-            this.txtNewEspecie.TabIndex = 31;
             // 
             // txtNewPeso
             // 
@@ -190,6 +183,14 @@
             this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
+            // cbNewEspecie
+            // 
+            this.cbNewEspecie.FormattingEnabled = true;
+            this.cbNewEspecie.Location = new System.Drawing.Point(93, 210);
+            this.cbNewEspecie.Name = "cbNewEspecie";
+            this.cbNewEspecie.Size = new System.Drawing.Size(121, 30);
+            this.cbNewEspecie.TabIndex = 31;
+            // 
             // FormModificar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,11 +221,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNewEspecie;
         private System.Windows.Forms.TextBox txtNewPeso;
         private System.Windows.Forms.TextBox txtNewEdad;
         private System.Windows.Forms.TextBox txtNewRaza;
         private System.Windows.Forms.TextBox txtNewNombre;
         private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.ComboBox cbNewEspecie;
     }
 }

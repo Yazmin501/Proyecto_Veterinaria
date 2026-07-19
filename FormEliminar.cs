@@ -20,19 +20,27 @@ namespace Proyecto_Veterinaria
 
         private void cmdMascotas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Mascota seleccionada = (Mascota)cmdMascotas.SelectedItem;
+            string especieSeleccionada = cmdMascotas.SelectedItem.ToString();
 
-            if (seleccionada != null)
-            {
-                lbRaza.Text = "Raza: " + seleccionada.Raza;
-                lbEdad.Text = "Edad: " + seleccionada.Edad.ToString() + " años";
-                lbPeso.Text = "Peso: " + seleccionada.Peso.ToString() + " kg";
-                lbEspecie.Text = "Especie: " + seleccionada.Especie;
-            }
+            // Filtrar mascotas por especie
+            var filtradas = DatosGlobales.veterinaria.ObtenerMascotas()
+                .Where(m => m.Especie == especieSeleccionada)
+                .ToList();
+
+            cmdMascotas.DataSource = null;
+            cmdMascotas.DataSource = filtradas;
+            cmdMascotas.DisplayMember = "Nombre";
         }
 
         private void FormEliminar_Load(object sender, EventArgs e)
         {
+            // Llenar ComboBox de especies
+            cmdMascotas.Items.Clear();
+            cmdMascotas.Items.Add("Perro");
+            cmdMascotas.Items.Add("Gato");
+            cmdMascotas.Items.Add("Ave");
+            cmdMascotas.Items.Add("Pez");
+            cmdMascotas.Items.Add("Roedor");
             // Llenar ComboBox con nombres de mascotas
             cmdMascotas.DataSource = veterinaria.ObtenerMascotas();
             cmdMascotas.DisplayMember = "Nombre"; // mostrar solo el nombre
