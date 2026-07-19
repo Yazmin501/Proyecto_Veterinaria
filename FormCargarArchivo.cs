@@ -16,7 +16,7 @@ namespace Proyecto_Veterinaria
         {
             InitializeComponent();
         }
-
+        private Veterinaria Veterinaria = new Veterinaria();
         private void btnCargarArchivo_Click(object sender, EventArgs e)
         {
             try

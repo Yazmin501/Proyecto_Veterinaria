@@ -31,17 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormModificar));
             this.cmdMascotas = new System.Windows.Forms.ComboBox();
             this.gpModificarMascota = new System.Windows.Forms.GroupBox();
-            this.btnModificar = new System.Windows.Forms.Button();
+            this.txtNewEspecie = new System.Windows.Forms.TextBox();
+            this.txtNewPeso = new System.Windows.Forms.TextBox();
+            this.txtNewEdad = new System.Windows.Forms.TextBox();
+            this.txtNewRaza = new System.Windows.Forms.TextBox();
+            this.txtNewNombre = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtNewNombre = new System.Windows.Forms.TextBox();
-            this.txtNewRaza = new System.Windows.Forms.TextBox();
-            this.txtNewEdad = new System.Windows.Forms.TextBox();
-            this.txtNewPeso = new System.Windows.Forms.TextBox();
-            this.txtNewEspecie = new System.Windows.Forms.TextBox();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.gpModificarMascota.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,19 +81,40 @@
             this.gpModificarMascota.TabStop = false;
             this.gpModificarMascota.Text = "Modificar Datos Mascota";
             // 
-            // btnModificar
+            // txtNewEspecie
             // 
-            this.btnModificar.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificar.Font = new System.Drawing.Font("Samsung SVD_Medium_JP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.btnModificar.Location = new System.Drawing.Point(134, 384);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(167, 35);
-            this.btnModificar.TabIndex = 2;
-            this.btnModificar.Text = "Modificar Mascota";
-            this.btnModificar.UseVisualStyleBackColor = false;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.txtNewEspecie.Location = new System.Drawing.Point(88, 209);
+            this.txtNewEspecie.Name = "txtNewEspecie";
+            this.txtNewEspecie.Size = new System.Drawing.Size(100, 33);
+            this.txtNewEspecie.TabIndex = 31;
+            // 
+            // txtNewPeso
+            // 
+            this.txtNewPeso.Location = new System.Drawing.Point(88, 170);
+            this.txtNewPeso.Name = "txtNewPeso";
+            this.txtNewPeso.Size = new System.Drawing.Size(100, 33);
+            this.txtNewPeso.TabIndex = 30;
+            // 
+            // txtNewEdad
+            // 
+            this.txtNewEdad.Location = new System.Drawing.Point(89, 131);
+            this.txtNewEdad.Name = "txtNewEdad";
+            this.txtNewEdad.Size = new System.Drawing.Size(100, 33);
+            this.txtNewEdad.TabIndex = 29;
+            // 
+            // txtNewRaza
+            // 
+            this.txtNewRaza.Location = new System.Drawing.Point(89, 92);
+            this.txtNewRaza.Name = "txtNewRaza";
+            this.txtNewRaza.Size = new System.Drawing.Size(100, 33);
+            this.txtNewRaza.TabIndex = 28;
+            // 
+            // txtNewNombre
+            // 
+            this.txtNewNombre.Location = new System.Drawing.Point(93, 48);
+            this.txtNewNombre.Name = "txtNewNombre";
+            this.txtNewNombre.Size = new System.Drawing.Size(100, 33);
+            this.txtNewNombre.TabIndex = 27;
             // 
             // label5
             // 
@@ -139,40 +161,34 @@
             this.label1.TabIndex = 22;
             this.label1.Text = "Nombre:";
             // 
-            // txtNewNombre
+            // btnModificar
             // 
-            this.txtNewNombre.Location = new System.Drawing.Point(93, 48);
-            this.txtNewNombre.Name = "txtNewNombre";
-            this.txtNewNombre.Size = new System.Drawing.Size(100, 33);
-            this.txtNewNombre.TabIndex = 27;
+            this.btnModificar.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Font = new System.Drawing.Font("Samsung SVD_Medium_JP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnModificar.Location = new System.Drawing.Point(134, 384);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(167, 35);
+            this.btnModificar.TabIndex = 2;
+            this.btnModificar.Text = "Modificar Mascota";
+            this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // txtNewRaza
+            // btnActualizar
             // 
-            this.txtNewRaza.Location = new System.Drawing.Point(89, 92);
-            this.txtNewRaza.Name = "txtNewRaza";
-            this.txtNewRaza.Size = new System.Drawing.Size(100, 33);
-            this.txtNewRaza.TabIndex = 28;
-            // 
-            // txtNewEdad
-            // 
-            this.txtNewEdad.Location = new System.Drawing.Point(89, 131);
-            this.txtNewEdad.Name = "txtNewEdad";
-            this.txtNewEdad.Size = new System.Drawing.Size(100, 33);
-            this.txtNewEdad.TabIndex = 29;
-            // 
-            // txtNewPeso
-            // 
-            this.txtNewPeso.Location = new System.Drawing.Point(88, 170);
-            this.txtNewPeso.Name = "txtNewPeso";
-            this.txtNewPeso.Size = new System.Drawing.Size(100, 33);
-            this.txtNewPeso.TabIndex = 30;
-            // 
-            // txtNewEspecie
-            // 
-            this.txtNewEspecie.Location = new System.Drawing.Point(88, 209);
-            this.txtNewEspecie.Name = "txtNewEspecie";
-            this.txtNewEspecie.Size = new System.Drawing.Size(100, 33);
-            this.txtNewEspecie.TabIndex = 31;
+            this.btnActualizar.BackColor = System.Drawing.Color.Moccasin;
+            this.btnActualizar.FlatAppearance.BorderSize = 0;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Font = new System.Drawing.Font("Samsung SVD_Medium_JP", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnActualizar.Location = new System.Drawing.Point(174, 431);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(100, 29);
+            this.btnActualizar.TabIndex = 14;
+            this.btnActualizar.Text = "Actualizar Mascotas";
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // FormModificar
             // 
@@ -180,7 +196,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(403, 466);
+            this.ClientSize = new System.Drawing.Size(432, 511);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.gpModificarMascota);
             this.Controls.Add(this.cmdMascotas);
@@ -208,5 +225,6 @@
         private System.Windows.Forms.TextBox txtNewEdad;
         private System.Windows.Forms.TextBox txtNewRaza;
         private System.Windows.Forms.TextBox txtNewNombre;
+        private System.Windows.Forms.Button btnActualizar;
     }
 }

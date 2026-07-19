@@ -36,7 +36,7 @@
             this.lbPeso = new System.Windows.Forms.Label();
             this.lbEdad = new System.Windows.Forms.Label();
             this.lbRaza = new System.Windows.Forms.Label();
-            this.lnNombre = new System.Windows.Forms.Label();
+            this.lbNombre = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -79,7 +79,7 @@
             this.gpEliminar.Controls.Add(this.lbPeso);
             this.gpEliminar.Controls.Add(this.lbEdad);
             this.gpEliminar.Controls.Add(this.lbRaza);
-            this.gpEliminar.Controls.Add(this.lnNombre);
+            this.gpEliminar.Controls.Add(this.lbNombre);
             this.gpEliminar.Controls.Add(this.label5);
             this.gpEliminar.Controls.Add(this.label4);
             this.gpEliminar.Controls.Add(this.label3);
@@ -132,14 +132,14 @@
             this.lbRaza.TabIndex = 18;
             this.lbRaza.Text = "_________________";
             // 
-            // lnNombre
+            // lbNombre
             // 
-            this.lnNombre.AutoSize = true;
-            this.lnNombre.Location = new System.Drawing.Point(114, 29);
-            this.lnNombre.Name = "lnNombre";
-            this.lnNombre.Size = new System.Drawing.Size(112, 22);
-            this.lnNombre.TabIndex = 17;
-            this.lnNombre.Text = "_________________";
+            this.lbNombre.AutoSize = true;
+            this.lbNombre.Location = new System.Drawing.Point(114, 29);
+            this.lbNombre.Name = "lbNombre";
+            this.lbNombre.Size = new System.Drawing.Size(112, 22);
+            this.lbNombre.TabIndex = 17;
+            this.lbNombre.Text = "_________________";
             // 
             // label5
             // 
@@ -214,7 +214,7 @@
         private System.Windows.Forms.Label lbPeso;
         private System.Windows.Forms.Label lbEdad;
         private System.Windows.Forms.Label lbRaza;
-        private System.Windows.Forms.Label lnNombre;
+        private System.Windows.Forms.Label lbNombre;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

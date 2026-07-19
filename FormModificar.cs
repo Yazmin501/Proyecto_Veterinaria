@@ -16,13 +16,23 @@ namespace Proyecto_Veterinaria
         {
             InitializeComponent();
         }
+        private Veterinaria Veterinaria = new Veterinaria();
 
-      
 
         private void FormModificar_Load(object sender, EventArgs e)
         {
-            cmdMascotas.DataSource = Veterinaria.ObtenerMascotas();
-            cmdMascotas.DisplayMember = "Nombre"; // mostrar solo el nombre
+            //Veterinaria.Listar_Mascotas(); // cargar mascotas desde archivo
+            //cmdMascotas.DisplayMember = "Nombre"; // mostrar solo el nombre
+            //cmdMascotas.DataSource = Veterinaria.ObtenerMascotas();
+            var mascotas = Veterinaria.ObtenerMascotas();
+            if (mascotas == null || mascotas.Length == 0)
+            {
+                // sin mascotas: configurar UI en estado vacío
+                cmdMascotas.DataSource = new Mascota[0];
+                return;
+            }
+            cmdMascotas.DisplayMember = "Nombre";
+            cmdMascotas.DataSource = mascotas;
         }
 
         private void cmdMascotas_SelectedIndexChanged(object sender, EventArgs e)
@@ -32,11 +42,11 @@ namespace Proyecto_Veterinaria
             if (seleccionada != null)
             {
                
-                txtNombreNuevo.Text = seleccionada.Nombre;
-                txtRazaNueva.Text = seleccionada.Raza;
-                txtEdadNueva.Text = seleccionada.Edad.ToString();
-                txtPesoNuevo.Text = seleccionada.Peso.ToString();
-                txtEspecieNueva.Text = seleccionada.Especie;
+                txtNewNombre.Text = seleccionada.Nombre;
+                txtNewRaza.Text = seleccionada.Raza;
+                txtNewEdad.Text = seleccionada.Edad.ToString();
+                txtNewPeso.Text = seleccionada.Peso.ToString();
+                txtNewEspecie.Text = seleccionada.Especie;
             }
         }
 
@@ -54,11 +64,11 @@ namespace Proyecto_Veterinaria
                         seleccionada.Edad,
                         seleccionada.Peso,
                         seleccionada.Especie,
-                        txtNombre.Text,
-                        txtRaza.Text,
-                        int.Parse(txtEdad.Text),
-                        double.Parse(txtPeso.Text),
-                        txtEspecie.Text
+                        txtNewNombre.Text,
+                        txtNewRaza.Text,
+                        int.Parse(txtNewEdad.Text),
+                        double.Parse(txtNewPeso.Text),
+                        txtNewEspecie.Text
                     );
 
                     MessageBox.Show(mensaje, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -73,6 +83,13 @@ namespace Proyecto_Veterinaria
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            cmdMascotas.DataSource = null; // limpiar
+            cmdMascotas.DataSource = Veterinaria.ObtenerMascotas(); // volver a cargar
+            cmdMascotas.DisplayMember = "Nombre"; // mostrar el nombre
         }
     }
 }

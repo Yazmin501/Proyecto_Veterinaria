@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace Proyecto_Veterinaria
 {
    
-    internal class Veterinaria
+    public class Veterinaria
     {
 
         //arreglo de objeto , almacena las mascotas
@@ -57,16 +57,28 @@ namespace Proyecto_Veterinaria
         // metodo para listar las mascotas
         public string Listar_Mascotas()
         {
-            if(indice == 0)
-            {
-               throw new InvalidOperationException( "No hay mascotas registradas.");
-            }
-            string lista = "";
-            for (int i = 0; i < indice; i++)
-            {
-                lista += Arr_Mascotas[i].ToString() + "\n";
-            }
-            return lista;
+
+        
+        //    if(indice == 0)
+        //    {
+        //       throw new InvalidOperationException( "No hay mascotas registradas.");
+        //    }
+        //    string lista = "";
+        //    for (int i = 0; i < indice; i++)
+        //    {
+        //        lista += Arr_Mascotas[i].ToString() + "\n";
+        //    }
+        //    return lista;
+                         if (indice == 0)
+                    {
+                        return string.Empty; // o "No hay mascotas registradas."
+                    }
+                    var sb = new System.Text.StringBuilder();
+                    for (int i = 0; i<indice; i++)
+                    {
+                        sb.AppendLine(Arr_Mascotas[i].ToString());
+                    }
+                return sb.ToString();
         }
 
         // metodo para buscar, y modificar una mascota
@@ -76,44 +88,42 @@ namespace Proyecto_Veterinaria
             string mensaje = "Mascota no encontrada";
             bool encontrado = false;
 
-            for (int i = 0; i < indice; i++)
+            for (int i = 0; i < Arr_Mascotas.Length; i++)
             {
-                if (Arr_Mascotas[i].Nombre == nombre &&
-                    Arr_Mascotas[i].Raza == raza &&
-                    Arr_Mascotas[i].Edad == edad &&
-                    Arr_Mascotas[i].Peso == peso &&
-                    Arr_Mascotas[i].Especie == especie)
+                if (Arr_Mascotas[i] != null &&
+                    Arr_Mascotas[i].Nombre == nombre &&
+                    Arr_Mascotas[i].Raza == raza)
+
                 {
                     //validar los nuevos datos antes de modificar
-                    if(string.IsNullOrWhiteSpace(nombreNuevo) || string.IsNullOrWhiteSpace(razaNueva) ||
+                    if (string.IsNullOrWhiteSpace(nombreNuevo) || string.IsNullOrWhiteSpace(razaNueva) ||
                        edadNueva < 0 || pesoNuevo < 0 || string.IsNullOrWhiteSpace(especieNueva))
                     {
                         throw new ArgumentException("¡Error! Todos los campos de la mascota deben ser válidos.");
                     }
                     //modificador
-                    encontrado = true;
+
                     Arr_Mascotas[i].Nombre = nombreNuevo;
                     Arr_Mascotas[i].Raza = razaNueva;
                     Arr_Mascotas[i].Edad = edadNueva;
                     Arr_Mascotas[i].Peso = pesoNuevo;
                     Arr_Mascotas[i].Especie = especieNueva;
-                    mensaje = "Mascota modificada correctamente";
+                    encontrado = true;
                     break; // salir del ciclo
-
                 }
-                return mensaje;
-
             }
-            throw new InvalidOperationException("Mascota no encontrada para modificar.");
-
-
+               //if(!encontrado)
+               // throw new ArgumentException("¡Error! La mascota no se encontró para modificar.");
+               if(encontrado)
+                mensaje = "Mascota modificada correctamente";
+            return mensaje;
         }
 
         // metodo para eliminar una mascota
         public string Eliminar_Mascota(string nombre, string raza, int edad, double peso, string especie)
         {
             string mensaje = "Mascota no encontrada";
-            bool encontrado = false;
+            //bool encontrado = false;
             int posicion = -1;
 
             for (int i = 0; i < indice; i++)
@@ -124,20 +134,21 @@ namespace Proyecto_Veterinaria
                     Arr_Mascotas[i].Peso == peso &&
                     Arr_Mascotas[i].Especie == especie)
                 {
-                    encontrado = true;
+                    //encontrado = true;
                     posicion = i;
                     break; // salir del ciclo
                 }
             }
+            //validar si encontro la mascota
 
             if(posicion==-1)
                 throw new ArgumentException("¡Error! La mascota no se encontró para eliminar.");
 
             //recorrer el arreglo para eliminar
             for (int j = posicion; j < indice - 1; j++)
-            { 
+            
                  Arr_Mascotas[j] = Arr_Mascotas[j + 1];
-             }
+             
 
                 Arr_Mascotas[indice - 1] = null;
                 indice--;
@@ -170,15 +181,14 @@ namespace Proyecto_Veterinaria
                         throw new FormatException("Formato de línea incorrecto en el archivo.");
 
                     // Crear objeto Mascota
-                    Mascota nueva = new Mascota
-                    {
-                        nueva.Nombre = datos[0],
-                        nueva.Raza = datos[1],
-                        nueva.Edad = int.Parse(datos[2]),
-                        nueva.Peso = double.Parse(datos[3]),
-                        nueva.Especie = datos[4]
-                    };
-                
+                    Mascota nueva = new Mascota(
+                        datos[0],
+                        datos[1],
+                        int.Parse(datos[2]),
+                        double.Parse(datos[3]),
+                        datos[4]
+                    );
+
                     // Guardar en el arreglo
                     Arr_Mascotas[i] = nueva;
                     Indice++;
@@ -196,7 +206,6 @@ namespace Proyecto_Veterinaria
             {
                 resultado = "Error al listar archivo: " + ex.Message;
             }
-
             return resultado;
         }
         public Mascota[] ObtenerMascotas()
