@@ -134,6 +134,7 @@
             this.btnRegistrarMascota.TabIndex = 10;
             this.btnRegistrarMascota.Text = "Registrar Mascota";
             this.btnRegistrarMascota.UseVisualStyleBackColor = true;
+            this.btnRegistrarMascota.Click += new System.EventHandler(this.btnRegistrarMascota_Click_1);
             // 
             // btnLimpiar
             // 
