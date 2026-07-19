@@ -16,7 +16,7 @@ namespace Proyecto_Veterinaria
 {
     public partial class agregar : Form
     {
-        private Veterinaria Veterinaria = new Veterinaria();
+        public Veterinaria Veterinaria = DatosGlobales.veterinaria;
         public agregar()
         {
             InitializeComponent();
@@ -30,39 +30,38 @@ namespace Proyecto_Veterinaria
         {
 
         }
-        private void LimpiarControles()
-        {
-            txtNombre.Clear();
-            txtRaza.Clear();
-            txtEdad.Clear();
-            txtPeso.Clear();
+        //private void LimpiarControles()
+        //{
+        //    txtNombre.Clear();
+        //    txtRaza.Clear();
+        //    txtEdad.Clear();
+        //    txtPeso.Clear();
 
-            rdPerro.Checked = false;
-            rdGato.Checked = false;
-            rdAve.Checked = false;
-            rdPez.Checked = false;
-            rdRoedor.Checked = false;
+        //    rdPerro.Checked = false;
+        //    rdGato.Checked = false;
+        //    rdAve.Checked = false;
+        //    rdPez.Checked = false;
+        //    rdRoedor.Checked = false;
 
-            picPerro.Visible = false;
-            picGato.Visible = false;
-            picAve.Visible = false;
-            picPez.Visible = false;
-            picRoedor.Visible = false;
+        //    picPerro.Visible = false;
+        //    picGato.Visible = false;
+        //    picAve.Visible = false;
+        //    picPez.Visible = false;
+        //    picRoedor.Visible = false;
 
-            txtNombre.Focus();
-        }
+        //    txtNombre.Focus();
+        //}
 
         private void btnRegistrarMascota_Click(object sender, EventArgs e)
         {
             try
             {
-                //  Validación 
+                // Validación de campos
                 if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                     string.IsNullOrWhiteSpace(txtRaza.Text) ||
                     string.IsNullOrWhiteSpace(txtEdad.Text) ||
                     string.IsNullOrWhiteSpace(txtPeso.Text) ||
                     (!rdPerro.Checked && !rdGato.Checked && !rdAve.Checked && !rdPez.Checked && !rdRoedor.Checked))
-
                 {
                     throw new Exception("Error: Todos los campos de datos son obligatorios. No puede dejar campos vacíos.");
                 }
@@ -80,18 +79,21 @@ namespace Proyecto_Veterinaria
                 else if (rdAve.Checked) especie = "Ave";
                 else if (rdPez.Checked) especie = "Pez";
                 else if (rdRoedor.Checked) especie = "Roedor";
-                //  Crear el objeto Mascota 
-                Mascota nuevaMascota = new Mascota(
-                 txtNombre.Text.Trim(),
-                 txtRaza.Text.Trim(),
-                 int.Parse(txtEdad.Text),
-                 double.Parse(txtPeso.Text),
-                 
 
+                // Crear objeto Mascota
+                Mascota nuevaMascota = new Mascota(
+                    txtNombre.Text.Trim(),
+                    txtRaza.Text.Trim(),
+                    edad,
+                    peso,
+                    especie
+                );
+
+                // ✅ Tu método devuelve string, así que lo guardamos
                 string mensaje = Veterinaria.Agregar_Mascota(nuevaMascota);
 
-                // Mostramos los datos
-                MessageBox.Show("¡Mascota creada correctamente!\n\n" +
+                // Mostrar datos
+                MessageBox.Show(mensaje + "\n\n" +
                                 "Datos de la Mascota:\n" + nuevaMascota.ObtenerDatos(),
                                 "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -185,7 +187,7 @@ namespace Proyecto_Veterinaria
                     especie
                 );
 
-                string mensaje = Veterinaria.Agregar_Mascota(nuevaMascota);
+                string mensaje =DatosGlobales.veterinaria.Agregar_Mascota(nuevaMascota);
 
                 // Mostrar datos
                 MessageBox.Show("¡Mascota creada correctamente!\n\n" +

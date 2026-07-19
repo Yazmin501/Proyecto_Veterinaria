@@ -31,15 +31,13 @@ namespace Proyecto_Veterinaria
         // metodo para agregar una mascota al arreglo y listar
         public string Agregar_Mascota(Mascota MASCOTA)
         {
-            if(MASCOTA == null)
-            
+            if (MASCOTA == null)
                 throw new ArgumentException("¡Error! La mascota no puede ser nula.");
-            
+
             if (string.IsNullOrWhiteSpace(MASCOTA.Nombre) || string.IsNullOrWhiteSpace(MASCOTA.Raza) ||
                 MASCOTA.Edad < 0 || MASCOTA.Peso < 0 || string.IsNullOrWhiteSpace(MASCOTA.Especie))
-            
                 throw new ArgumentException("¡Error! Todos los campos de la mascota deben ser válidos.");
-            
+
             string mensaje = "";
             if (Indice < Arr_Mascotas.Length)
             {
