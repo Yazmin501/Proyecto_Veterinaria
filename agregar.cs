@@ -12,6 +12,7 @@ namespace Proyecto_Veterinaria
 {
     public partial class agregar : Form
     {
+        private Veterinaria Veterinaria = new Veterinaria();
         public agregar()
         {
             InitializeComponent();
