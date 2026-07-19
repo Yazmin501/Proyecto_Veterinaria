@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(agregar));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,21 +38,23 @@
             this.txtPeso = new System.Windows.Forms.TextBox();
             this.txtEdad = new System.Windows.Forms.TextBox();
             this.txtRaza = new System.Windows.Forms.TextBox();
-            this.cbEspecie = new System.Windows.Forms.ComboBox();
             this.btnRegistrarMascota = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.picMascota = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picMascota)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.picPez = new System.Windows.Forms.PictureBox();
+            this.picGato = new System.Windows.Forms.PictureBox();
+            this.picAve = new System.Windows.Forms.PictureBox();
+            this.picRoedor = new System.Windows.Forms.PictureBox();
+            this.picPerro = new System.Windows.Forms.PictureBox();
+            this.rdPerro = new System.Windows.Forms.RadioButton();
+            this.rdRoedor = new System.Windows.Forms.RadioButton();
+            this.rdGato = new System.Windows.Forms.RadioButton();
+            this.rdPez = new System.Windows.Forms.RadioButton();
+            this.rdAve = new System.Windows.Forms.RadioButton();
+            ((System.ComponentModel.ISupportInitialize)(this.picPez)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGato)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAve)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRoedor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPerro)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -128,14 +131,6 @@
             this.txtRaza.Size = new System.Drawing.Size(100, 20);
             this.txtRaza.TabIndex = 8;
             // 
-            // cbEspecie
-            // 
-            this.cbEspecie.FormattingEnabled = true;
-            this.cbEspecie.Location = new System.Drawing.Point(164, 243);
-            this.cbEspecie.Name = "cbEspecie";
-            this.cbEspecie.Size = new System.Drawing.Size(121, 21);
-            this.cbEspecie.TabIndex = 9;
-            // 
             // btnRegistrarMascota
             // 
             this.btnRegistrarMascota.Location = new System.Drawing.Point(238, 326);
@@ -156,57 +151,119 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click_1);
             // 
-            // picMascota
+            // picPez
             // 
-            this.picMascota.BackgroundImage = global::Proyecto_Veterinaria.Properties.Resources.hehehe;
-            this.picMascota.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picMascota.Location = new System.Drawing.Point(435, 110);
-            this.picMascota.Name = "picMascota";
-            this.picMascota.Size = new System.Drawing.Size(176, 143);
-            this.picMascota.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picMascota.TabIndex = 12;
-            this.picMascota.TabStop = false;
-            this.picMascota.Click += new System.EventHandler(this.picMascota_Click);
+            this.picPez.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picPez.BackgroundImage")));
+            this.picPez.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picPez.Location = new System.Drawing.Point(427, 98);
+            this.picPez.Name = "picPez";
+            this.picPez.Size = new System.Drawing.Size(170, 141);
+            this.picPez.TabIndex = 13;
+            this.picPez.TabStop = false;
+            this.picPez.Click += new System.EventHandler(this.picPez_Click);
             // 
-            // pictureBox1
+            // picGato
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(330, 110);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(170, 141);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
+            this.picGato.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picGato.BackgroundImage")));
+            this.picGato.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picGato.Location = new System.Drawing.Point(411, 86);
+            this.picGato.Name = "picGato";
+            this.picGato.Size = new System.Drawing.Size(170, 141);
+            this.picGato.TabIndex = 14;
+            this.picGato.TabStop = false;
+            this.picGato.Click += new System.EventHandler(this.picGato_Click);
             // 
-            // pictureBox2
+            // picAve
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(240, 125);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(170, 141);
-            this.pictureBox2.TabIndex = 14;
-            this.pictureBox2.TabStop = false;
+            this.picAve.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picAve.BackgroundImage")));
+            this.picAve.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picAve.Location = new System.Drawing.Point(411, 98);
+            this.picAve.Name = "picAve";
+            this.picAve.Size = new System.Drawing.Size(170, 141);
+            this.picAve.TabIndex = 15;
+            this.picAve.TabStop = false;
+            this.picAve.Click += new System.EventHandler(this.picAve_Click);
             // 
-            // pictureBox3
+            // picRoedor
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(357, 175);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(170, 141);
-            this.pictureBox3.TabIndex = 15;
-            this.pictureBox3.TabStop = false;
+            this.picRoedor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picRoedor.BackgroundImage")));
+            this.picRoedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picRoedor.Location = new System.Drawing.Point(411, 98);
+            this.picRoedor.Name = "picRoedor";
+            this.picRoedor.Size = new System.Drawing.Size(170, 141);
+            this.picRoedor.TabIndex = 17;
+            this.picRoedor.TabStop = false;
+            this.picRoedor.Click += new System.EventHandler(this.picRoedor_Click);
             // 
-            // pictureBox4
+            // picPerro
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(98, 158);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(170, 141);
-            this.pictureBox4.TabIndex = 16;
-            this.pictureBox4.TabStop = false;
+            this.picPerro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picPerro.BackgroundImage")));
+            this.picPerro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picPerro.Location = new System.Drawing.Point(411, 98);
+            this.picPerro.Name = "picPerro";
+            this.picPerro.Size = new System.Drawing.Size(186, 161);
+            this.picPerro.TabIndex = 18;
+            this.picPerro.TabStop = false;
             // 
-            // pictureBox5
+            // rdPerro
             // 
-            this.pictureBox5.Location = new System.Drawing.Point(72, 63);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(170, 141);
-            this.pictureBox5.TabIndex = 17;
-            this.pictureBox5.TabStop = false;
+            this.rdPerro.AutoSize = true;
+            this.rdPerro.Location = new System.Drawing.Point(183, 241);
+            this.rdPerro.Name = "rdPerro";
+            this.rdPerro.Size = new System.Drawing.Size(50, 17);
+            this.rdPerro.TabIndex = 19;
+            this.rdPerro.TabStop = true;
+            this.rdPerro.Text = "Perro";
+            this.rdPerro.UseVisualStyleBackColor = true;
+            this.rdPerro.CheckedChanged += new System.EventHandler(this.rdPerro_CheckedChanged);
+            // 
+            // rdRoedor
+            // 
+            this.rdRoedor.AutoSize = true;
+            this.rdRoedor.Location = new System.Drawing.Point(278, 241);
+            this.rdRoedor.Name = "rdRoedor";
+            this.rdRoedor.Size = new System.Drawing.Size(60, 17);
+            this.rdRoedor.TabIndex = 20;
+            this.rdRoedor.TabStop = true;
+            this.rdRoedor.Text = "Roedor";
+            this.rdRoedor.UseVisualStyleBackColor = true;
+            this.rdRoedor.CheckedChanged += new System.EventHandler(this.rdRoedor_CheckedChanged);
+            // 
+            // rdGato
+            // 
+            this.rdGato.AutoSize = true;
+            this.rdGato.Location = new System.Drawing.Point(183, 264);
+            this.rdGato.Name = "rdGato";
+            this.rdGato.Size = new System.Drawing.Size(48, 17);
+            this.rdGato.TabIndex = 21;
+            this.rdGato.TabStop = true;
+            this.rdGato.Text = "Gato";
+            this.rdGato.UseVisualStyleBackColor = true;
+            this.rdGato.CheckedChanged += new System.EventHandler(this.rdGato_CheckedChanged);
+            // 
+            // rdPez
+            // 
+            this.rdPez.AutoSize = true;
+            this.rdPez.Location = new System.Drawing.Point(274, 264);
+            this.rdPez.Name = "rdPez";
+            this.rdPez.Size = new System.Drawing.Size(43, 17);
+            this.rdPez.TabIndex = 22;
+            this.rdPez.TabStop = true;
+            this.rdPez.Text = "Pez";
+            this.rdPez.UseVisualStyleBackColor = true;
+            this.rdPez.CheckedChanged += new System.EventHandler(this.rdPez_CheckedChanged);
+            // 
+            // rdAve
+            // 
+            this.rdAve.AutoSize = true;
+            this.rdAve.Location = new System.Drawing.Point(183, 287);
+            this.rdAve.Name = "rdAve";
+            this.rdAve.Size = new System.Drawing.Size(44, 17);
+            this.rdAve.TabIndex = 23;
+            this.rdAve.TabStop = true;
+            this.rdAve.Text = "Ave";
+            this.rdAve.UseVisualStyleBackColor = true;
+            this.rdAve.CheckedChanged += new System.EventHandler(this.rdAve_CheckedChanged);
             // 
             // agregar
             // 
@@ -215,15 +272,18 @@
             this.BackgroundImage = global::Proyecto_Veterinaria.Properties.Resources.เวกเตอร์ฟรี_____ชื่อ__;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(651, 390);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.picMascota);
+            this.Controls.Add(this.rdAve);
+            this.Controls.Add(this.rdPez);
+            this.Controls.Add(this.rdGato);
+            this.Controls.Add(this.rdRoedor);
+            this.Controls.Add(this.rdPerro);
+            this.Controls.Add(this.picPerro);
+            this.Controls.Add(this.picRoedor);
+            this.Controls.Add(this.picAve);
+            this.Controls.Add(this.picGato);
+            this.Controls.Add(this.picPez);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnRegistrarMascota);
-            this.Controls.Add(this.cbEspecie);
             this.Controls.Add(this.txtRaza);
             this.Controls.Add(this.txtEdad);
             this.Controls.Add(this.txtPeso);
@@ -236,12 +296,11 @@
             this.Name = "agregar";
             this.Text = "agregar";
             this.Load += new System.EventHandler(this.agregar_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picMascota)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPez)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGato)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAve)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRoedor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPerro)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,14 +317,18 @@
         private System.Windows.Forms.TextBox txtPeso;
         private System.Windows.Forms.TextBox txtEdad;
         private System.Windows.Forms.TextBox txtRaza;
-        private System.Windows.Forms.ComboBox cbEspecie;
+      
         private System.Windows.Forms.Button btnRegistrarMascota;
         private System.Windows.Forms.Button btnLimpiar;
-        private System.Windows.Forms.PictureBox picMascota;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox picPez;
+        private System.Windows.Forms.PictureBox picGato;
+        private System.Windows.Forms.PictureBox picAve;
+        private System.Windows.Forms.PictureBox picRoedor;
+        private System.Windows.Forms.PictureBox picPerro;
+        private System.Windows.Forms.RadioButton rdPerro;
+        private System.Windows.Forms.RadioButton rdRoedor;
+        private System.Windows.Forms.RadioButton rdGato;
+        private System.Windows.Forms.RadioButton rdPez;
+        private System.Windows.Forms.RadioButton rdAve;
     }
 }

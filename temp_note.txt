@@ -1,0 +1,1 @@
+Closing VS not possible programmatically. Need user to close solution. Alternative: use Properties.Resources existing resources. Next steps: update agregar.cs to use Properties.Resources.gato_png etc if available. Inspect Properties\Resources.Designer.cs for resource names.

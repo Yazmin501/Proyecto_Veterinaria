@@ -129,9 +129,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="apply_note.txt" />
     <Content Include="Mascotas.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="temp_note.txt" />
     <None Include="Resources\gato.png.png" />
     <None Include="Resources\perro.png.png" />
     <None Include="Resources\hehehe.png" />

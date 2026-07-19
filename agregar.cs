@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows.Forms;
 using Proyecto_Veterinaria;
 
@@ -18,11 +20,36 @@ namespace Proyecto_Veterinaria
         public agregar()
         {
             InitializeComponent();
+            // El evento SelectedIndexChanged ya está suscrito desde el diseñador a
+            // cbEspecie_SelectedIndexChanged_1, evitar suscribir uno distinto aquí.
         }
+
+       
 
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+        private void LimpiarControles()
+        {
+            txtNombre.Clear();
+            txtRaza.Clear();
+            txtEdad.Clear();
+            txtPeso.Clear();
+
+            rdPerro.Checked = false;
+            rdGato.Checked = false;
+            rdAve.Checked = false;
+            rdPez.Checked = false;
+            rdRoedor.Checked = false;
+
+            picPerro.Visible = false;
+            picGato.Visible = false;
+            picAve.Visible = false;
+            picPez.Visible = false;
+            picRoedor.Visible = false;
+
+            txtNombre.Focus();
         }
 
         private void btnRegistrarMascota_Click(object sender, EventArgs e)
@@ -34,7 +61,8 @@ namespace Proyecto_Veterinaria
                     string.IsNullOrWhiteSpace(txtRaza.Text) ||
                     string.IsNullOrWhiteSpace(txtEdad.Text) ||
                     string.IsNullOrWhiteSpace(txtPeso.Text) ||
-                    cbEspecie.SelectedIndex == -1)
+                    (!rdPerro.Checked && !rdGato.Checked && !rdAve.Checked && !rdPez.Checked && !rdRoedor.Checked))
+
                 {
                     throw new Exception("Error: Todos los campos de datos son obligatorios. No puede dejar campos vacíos.");
                 }
@@ -45,15 +73,22 @@ namespace Proyecto_Veterinaria
                     throw new Exception("Error: La edad debe ser un número entero y el peso un valor decimal válido.");
                 }
 
+                // Determinar especie según RadioButton
+                string especie = "";
+                if (rdPerro.Checked) especie = "Perro";
+                else if (rdGato.Checked) especie = "Gato";
+                else if (rdAve.Checked) especie = "Ave";
+                else if (rdPez.Checked) especie = "Pez";
+                else if (rdRoedor.Checked) especie = "Roedor";
                 //  Crear el objeto Mascota 
                 Mascota nuevaMascota = new Mascota(
                  txtNombre.Text.Trim(),
                  txtRaza.Text.Trim(),
                  int.Parse(txtEdad.Text),
                  double.Parse(txtPeso.Text),
-                  cbEspecie.SelectedItem.ToString());
+                 
 
-                string mensaje = DatosGlobales.veterinaria.Agregar_Mascota(nuevaMascota);
+                string mensaje = Veterinaria.Agregar_Mascota(nuevaMascota);
 
                 // Mostramos los datos
                 MessageBox.Show("¡Mascota creada correctamente!\n\n" +
@@ -68,35 +103,7 @@ namespace Proyecto_Veterinaria
             }
         }
 
-        private void cbEspecie_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbEspecie.SelectedIndex != -1)
-            {
-                string especie = cbEspecie.SelectedItem.ToString().ToLower();
-
-                try
-                {
-                    if (especie.Contains("perro"))
-                    {
-                        picMascota.Image = Image.FromFile("imagenes/perro.png");
-                    }
-                    else if (especie.Contains("gato"))
-                    {
-                        picMascota.Image = Image.FromFile("imagenes/gato.png");
-                    }
-                    else
-                    {
-                        picMascota.Image = Image.FromFile("imagenes/default.png");
-                    }
-
-                    picMascota.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-                catch
-                {
-                    picMascota.Image = null;
-                }
-            }
-        }
+       
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
@@ -109,8 +116,19 @@ namespace Proyecto_Veterinaria
             txtRaza.Clear();
             txtEdad.Clear();
             txtPeso.Clear();
-            cbEspecie.SelectedIndex = -1;
-            picMascota.Image = null;
+
+            rdPerro.Checked = false;
+            rdGato.Checked = false;
+            rdAve.Checked = false;
+            rdPez.Checked = false;
+            rdRoedor.Checked = false;
+
+            picPerro.Visible = false;
+            picGato.Visible = false;
+            picAve.Visible = false;
+            picPez.Visible = false;
+            picRoedor.Visible = false;
+
             txtNombre.Focus();
         }
 
@@ -120,8 +138,12 @@ namespace Proyecto_Veterinaria
             txtRaza.Clear();
             txtEdad.Clear();
             txtPeso.Clear();
-            cbEspecie.SelectedIndex = -1;
-            picMascota.Image = null;
+           
+            if (picPerro != null) picPerro.Image = null;
+            if (picGato != null) picGato.Image = null;
+            if (picAve != null) picAve.Image = null;
+            if (picPez != null) picPez.Image = null;
+            if (picRoedor != null) picRoedor.Image = null;
             txtNombre.Focus();
 
         }
@@ -130,12 +152,12 @@ namespace Proyecto_Veterinaria
         {
             try
             {
-                //  Validación 
+                // Validación de campos
                 if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                     string.IsNullOrWhiteSpace(txtRaza.Text) ||
                     string.IsNullOrWhiteSpace(txtEdad.Text) ||
                     string.IsNullOrWhiteSpace(txtPeso.Text) ||
-                    cbEspecie.SelectedIndex == -1)
+                    (!rdPerro.Checked && !rdGato.Checked && !rdAve.Checked && !rdPez.Checked && !rdRoedor.Checked))
                 {
                     throw new Exception("Error: Todos los campos de datos son obligatorios. No puede dejar campos vacíos.");
                 }
@@ -146,17 +168,26 @@ namespace Proyecto_Veterinaria
                     throw new Exception("Error: La edad debe ser un número entero y el peso un valor decimal válido.");
                 }
 
-                //  Crear el objeto Mascota 
+                // Determinar especie según RadioButton
+                string especie = "";
+                if (rdPerro.Checked) especie = "Perro";
+                else if (rdGato.Checked) especie = "Gato";
+                else if (rdAve.Checked) especie = "Ave";
+                else if (rdPez.Checked) especie = "Pez";
+                else if (rdRoedor.Checked) especie = "Roedor";
+
+                // Crear objeto Mascota
                 Mascota nuevaMascota = new Mascota(
-                 txtNombre.Text.Trim(),
-                 txtRaza.Text.Trim(),
-                 int.Parse(txtEdad.Text),
-                 double.Parse(txtPeso.Text),
-                  cbEspecie.SelectedItem.ToString());
+                    txtNombre.Text.Trim(),
+                    txtRaza.Text.Trim(),
+                    edad,
+                    peso,
+                    especie
+                );
 
-                string mensaje = DatosGlobales.veterinaria.Agregar_Mascota(nuevaMascota);
+                string mensaje = Veterinaria.Agregar_Mascota(nuevaMascota);
 
-                // Mostramos los datos
+                // Mostrar datos
                 MessageBox.Show("¡Mascota creada correctamente!\n\n" +
                                 "Datos de la Mascota:\n" + nuevaMascota.ObtenerDatos(),
                                 "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -169,37 +200,107 @@ namespace Proyecto_Veterinaria
             }
 
         }
-
+      
         private void agregar_Load(object sender, EventArgs e)
         {
+            // Ocultar todas las imágenes al iniciar
+            picPerro.Visible = false;
+            picGato.Visible = false;
+            picAve.Visible = false;
+            picPez.Visible = false;
+            picRoedor.Visible = false;
+        }
 
-            // Llenar el ComboBox con las especies disponibles
+      
+        private void picRoedor_Click(object sender, EventArgs e)
+        {
 
-            cbEspecie.Items.Clear();
+           
+        }
 
-            string rutaArchivo = "Mascotas.txt";
-            if (System.IO.File.Exists(rutaArchivo))
+        private void picAve_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void picGato_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void picPez_Click(object sender, EventArgs e)
+        {
+              
+        }
+
+        private void rdPerro_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdPerro.Checked)
             {
-                string[] lineas = System.IO.File.ReadAllLines(rutaArchivo);
+                picPerro.Image = Image.FromFile("perro.png");
+                picPerro.Visible = true;
 
-                foreach (string linea in lineas)
-                {
-                    string[] datos = linea.Split(',');
-                    if (datos.Length == 5)
-                    {
-                        string especie = datos[4].Trim();
-                        if (!cbEspecie.Items.Contains(especie))
-                        {
-                            cbEspecie.Items.Add(especie);
-                        }
-                    }
-                }
+                picGato.Visible = false;
+                picAve.Visible = false;
+                picPez.Visible = false;
+                picRoedor.Visible = false;
             }
         }
 
-        private void picMascota_Click(object sender, EventArgs e)
+        private void rdGato_CheckedChanged(object sender, EventArgs e)
         {
+            if (rdGato.Checked)
+            {
+                picGato.Image = Image.FromFile("gato.png");
+                picGato.Visible = true;
 
+                picPerro.Visible = false;
+                picAve.Visible = false;
+                picPez.Visible = false;
+                picRoedor.Visible = false;
+            }
+        }
+
+        private void rdAve_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdAve.Checked)
+            {
+                picAve.Image = Image.FromFile("ave.png");
+                picAve.Visible = true;
+
+                picPerro.Visible = false;
+                picGato.Visible = false;
+                picPez.Visible = false;
+                picRoedor.Visible = false;
+            }
+        }
+
+        private void rdPez_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdPez.Checked)
+            {
+                picPez.Image = Image.FromFile("pez.png");
+                picPez.Visible = true;
+
+                picPerro.Visible = false;
+                picGato.Visible = false;
+                picAve.Visible = false;
+                picRoedor.Visible = false;
+            }
+        }
+
+        private void rdRoedor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdRoedor.Checked)
+            {
+                picRoedor.Image = Image.FromFile("roedor.png");
+                picRoedor.Visible = true;
+
+                picPerro.Visible = false;
+                picGato.Visible = false;
+                picAve.Visible = false;
+                picPez.Visible = false;
+            }
         }
     }
 }

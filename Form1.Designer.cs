@@ -63,7 +63,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.button1.Location = new System.Drawing.Point(334, 144);
+            this.button1.Location = new System.Drawing.Point(269, 45);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 33);
@@ -80,7 +80,7 @@
             this.btnCargarArchivo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCargarArchivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargarArchivo.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.btnCargarArchivo.Location = new System.Drawing.Point(171, 97);
+            this.btnCargarArchivo.Location = new System.Drawing.Point(192, 161);
             this.btnCargarArchivo.Margin = new System.Windows.Forms.Padding(2);
             this.btnCargarArchivo.Name = "btnCargarArchivo";
             this.btnCargarArchivo.Size = new System.Drawing.Size(121, 33);
@@ -97,10 +97,10 @@
             this.btnServicios.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnServicios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnServicios.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.btnServicios.Location = new System.Drawing.Point(334, 97);
+            this.btnServicios.Location = new System.Drawing.Point(334, 161);
             this.btnServicios.Margin = new System.Windows.Forms.Padding(2);
             this.btnServicios.Name = "btnServicios";
-            this.btnServicios.Size = new System.Drawing.Size(133, 33);
+            this.btnServicios.Size = new System.Drawing.Size(167, 33);
             this.btnServicios.TabIndex = 2;
             this.btnServicios.Text = "Servicios y Pagos";
             this.btnServicios.UseVisualStyleBackColor = false;
@@ -114,7 +114,7 @@
             this.btnEliminarMascota.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEliminarMascota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarMascota.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.btnEliminarMascota.Location = new System.Drawing.Point(334, 40);
+            this.btnEliminarMascota.Location = new System.Drawing.Point(334, 103);
             this.btnEliminarMascota.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarMascota.Name = "btnEliminarMascota";
             this.btnEliminarMascota.Size = new System.Drawing.Size(133, 31);
@@ -131,7 +131,7 @@
             this.btnModificarMascota.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnModificarMascota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificarMascota.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.btnModificarMascota.Location = new System.Drawing.Point(171, 40);
+            this.btnModificarMascota.Location = new System.Drawing.Point(171, 103);
             this.btnModificarMascota.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificarMascota.Name = "btnModificarMascota";
             this.btnModificarMascota.Size = new System.Drawing.Size(142, 31);
